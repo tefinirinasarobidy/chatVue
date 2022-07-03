@@ -55,7 +55,14 @@ export default {
     },
     methods: {
         login(){
-          auhtService.login(this.form)
+          auhtService.login(this.form).then(res => {
+            console.log(res);
+            if (res.data.access_token) {
+              localStorage.setItem('token', res.data.access_token)
+              this.$router.push('/')  
+                   
+            }
+         });
         }
     },
 }

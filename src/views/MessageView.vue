@@ -1,9 +1,9 @@
 <template>
 <div>
-    <nav>
+    <!-- <nav>
         <router-link to="/">Profile</router-link> |
         <router-link to="/message">Message</router-link>
-        </nav>
+        </nav> -->
         <main class="content">
         <div class="container p-0">
 

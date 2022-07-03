@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: HomeView,
     meta: {
@@ -26,7 +26,7 @@ const routes = [
     }
   },
   {
-    path: '/',
+    path: '/login',
     name: 'login',
     component: LoginView,
     meta: {
@@ -69,11 +69,11 @@ router.beforeEach((to,from,next) => {
   if (to.meta.isAuth) {
     console.log("rerer");
     if(!token){
-      next('/')
+      next('/login')
     }
   }
   if((to.path == '/login' || to.path == '/register') && token) {
-    next('/home')
+    next('/')
   }
   next()
 })

@@ -91,7 +91,12 @@ export default {
     methods: {
       register() {
         if(this.form.password == this.confirm_pass){
-          authService.register(this.form)
+          authService.register(this.form).then(res => {
+            if (res.data.access_token) {
+              localStorage.setItem('token', res.data.access_token)
+              this.$router.push('/')       
+            }
+        })
          
               // localStorage.setItem('storedData', this.input)
               // localStorage.getItem('storedData');

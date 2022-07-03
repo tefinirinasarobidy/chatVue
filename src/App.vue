@@ -1,13 +1,27 @@
 <template>
   <div id="app">
-    <!-- <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/> -->
+    <nav v-if="token">
+      <router-link to="/profile">Profile</router-link> |
+      <router-link to="/message">Message</router-link> |
+      <a  @click="logout()">logout</a>
+    </nav> 
     <router-view to="/" /> 
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      token : localStorage.getItem('token')
+    }
+  },
+  methods: {
+    logout(){
+     
+    }
+  },
+}
+</script>
 
 <style>
 #app {
