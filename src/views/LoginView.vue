@@ -59,6 +59,7 @@ export default {
             console.log(res);
             if (res.data.access_token) {
               localStorage.setItem('token', res.data.access_token)
+              localStorage.setItem('user', res.data.user)
               this.$router.push('/')  
                    
             }

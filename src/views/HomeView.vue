@@ -1,6 +1,6 @@
 <template>
   <div class="home"> 
-     <ProfileView /> 
+     <ProfileView :id="id"></ProfileView> 
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   name: 'HomeView',
   components: {
     ProfileView
-  }
+  },
+  data() {
+    return {
+      id: localStorage.getItem('user')
+    }
+  },
 }
 </script>

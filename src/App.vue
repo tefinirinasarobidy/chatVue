@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav v-if="token">
+    <nav>
       <router-link to="/profile">Profile</router-link> |
       <router-link to="/message">Message</router-link> |
       <a  @click="logout()">logout</a>
@@ -9,6 +9,7 @@
   </div>
 </template>
 <script>
+import authService from './service/authService.js'
 export default {
   data() {
     return {
@@ -17,7 +18,13 @@ export default {
   },
   methods: {
     logout(){
-     
+     authService.logout().then(res => {
+      console.log(res);
+      if(res.data) {
+        localStorage.removeItem('token');
+        this.$router.push('/login')
+      }
+     })
     }
   },
 }
