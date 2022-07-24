@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/profile">Profile</router-link> |
+      <router-link :to="{ name: 'profile', params: { id: id }}">Mon Profile</router-link> |
       <router-link to="/message">Message</router-link> |
+      <router-link to="/liste-user">Liste Utilisateru</router-link> |
       <a  @click="logout()">logout</a>
     </nav> 
     <router-view to="/" /> 
@@ -13,7 +14,8 @@ import authService from './service/authService.js'
 export default {
   data() {
     return {
-      token : localStorage.getItem('token')
+      token : localStorage.getItem('token'),
+      id: localStorage.getItem('user')
     }
   },
   methods: {

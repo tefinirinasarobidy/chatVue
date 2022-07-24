@@ -6,7 +6,7 @@
 
 <script>
 // @ is an alias to /src
-import ProfileView from './ProfileView.vue'
+import ProfileView from './profile/ProfileView.vue'
 
 export default {
   name: 'HomeView',

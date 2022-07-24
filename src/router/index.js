@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import LoginView from '../views/LoginView.vue'
+import LoginView from '../views/login/LoginView.vue'
 
 Vue.use(VueRouter)
 
@@ -50,9 +50,17 @@ const routes = [
     }
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     name: 'profile',
-    component:  () => import(/* webpackChunkName: "about" */ '../views/ProfileView.vue'),
+    component:  () => import(/* webpackChunkName: "about" */ '../views/profile/ProfileView.vue'),
+    meta: {
+      isAuth : true
+    }
+  },
+  {
+    path: '/liste-user',
+    name: 'liste-user',
+    component:  () => import(/* webpackChunkName: "about" */ '../views/listeUser/ListeUserView.vue'),
     meta: {
       isAuth : true
     }

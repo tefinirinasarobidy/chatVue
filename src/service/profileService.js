@@ -12,5 +12,8 @@ export default {
     },
     editInfoUser(form,id) {
         return axios.put(config.baseUrl +'api/profile/update-info/' + id, form, config.headers)
+    },
+    allUser() {
+        return axios.get(config.baseUrl + 'api/all-user',config.headers)
     }
 }

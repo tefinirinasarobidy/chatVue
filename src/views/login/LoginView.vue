@@ -41,7 +41,7 @@
       </section>
 </template>
 <script>
-import auhtService from '../service/authService.js'
+import auhtService from '../../service/authService.js'
 export default {
     name: 'LoginView',
     data() {
