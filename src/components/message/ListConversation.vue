@@ -9,13 +9,16 @@
         </div>
 
         <button @click="voir(conv)" class="list-group-item list-group-item-action border-0" v-for="conv in conversation" :key="conv.id">
-            <div class="badge bg-success float-right">5</div>
+            <!-- <div class="badge bg-success float-right">5</div> -->
             <div class="d-flex align-items-start">
                 <img v-if="conv.talked.customer.active_profile" :src="pathPdp + conv.talked.customer.active_profile.media.file_name" class="rounded-circle mr-1"  width="40" height="40">
                 <img v-else src="../../../public/avatar.png" class="rounded-circle mr-1"  width="40" height="40">
                 <div class="flex-grow-1 ml-3 limitelign">
                    {{conv.talked.customer.firstname + ' ' +  conv.talked.customer.lastname}}
-                    <div class="small">{{conv.last_message.message}}<span class="fas fa-circle chat-online"></span> Online</div>
+                    <div class="small">{{conv.last_message.message}}
+                        <span class="fas fa-circle chat-online"></span>
+                         <!-- Online -->
+                        </div>
                 </div>
             </div>
         </button>

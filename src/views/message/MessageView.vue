@@ -13,7 +13,7 @@
                             @seeMessage = "onClickSeeMessage">
                             </ListConversation> 
                         </div>
-                        <div class="col-12 col-lg-7 col-xl-9">
+                        <div class="col-12 col-lg-7 col-xl-9" v-if="conversationSelected">
                             <ListMessage 
                             :message = "allMessage"
                             :conversation = "conversationSelected"

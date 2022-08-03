@@ -24,6 +24,7 @@ export default {
       console.log(res);
       if(res.data) {
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         this.$router.push('/login')
       }
      })

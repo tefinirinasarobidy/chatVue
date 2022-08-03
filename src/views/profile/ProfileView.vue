@@ -14,9 +14,9 @@
                           <input @change="piece_jointe($event)" ref="picture" id="picture" type="file" class="form-control d-none" accept="image/*" name="picture" autofocus>
                         </div>
                         <div class="mt-3">
-                          <h4>John Doe</h4>
-                          <p class="text-secondary mb-1">Full Stack Developer</p>
-                          <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                          <h4>{{infoUser.firstname + ' '+ infoUser.lastname}}</h4>
+                          <!-- <p class="text-secondary mb-1">Full Stack Developer</p>
+                          <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p> -->
                           <button class="btn btn-outline-primary" @click="userSelected = infoUser" v-if="id_user != id_connecter" data-bs-toggle="modal" data-bs-target="#exampleModal">Message</button>
                         </div>
                       </div>
@@ -36,7 +36,7 @@
                           <h6 class="mb-0">First Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          <input type="text" v-model="infoUser.firstname" class="form-control">
+                          <input type="text" v-model="infoUser.firstname" class="form-control" :readonly="id_user != id_connecter">
                         </div>
                       </div>
                       <hr>
@@ -45,7 +45,7 @@
                           <h6 class="mb-0">Lastname</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          <input type="text" v-model="infoUser.lastname" class="form-control">
+                          <input type="text" v-model="infoUser.lastname" class="form-control" :readonly="id_user != id_connecter">
                         </div>
                       </div>
                       <hr>
@@ -54,7 +54,7 @@
                           <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          <input type="email" v-model="infoUser.email" class="form-control">
+                          <input type="email" v-model="infoUser.email" class="form-control" :readonly="id_user != id_connecter">
                         </div>
                       </div>
                       <hr>
@@ -64,7 +64,7 @@
                           <h6 class="mb-0">Sexe</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                          <select v-model="infoUser.sexe" class="custom-select form-control" id="inputGroupSelect01">
+                          <select v-model="infoUser.sexe" class="custom-select form-control" id="inputGroupSelect01"  :aria-readonly="id_user != id_connecter">
                             <option value="homme">Homme</option>
                             <option value="femme">Femme</option>
                         </select>
@@ -127,6 +127,7 @@ export default {
       modifPdp() {
         profileService.updatePdp(this.formImg,this.id).then(res => {
             console.log(res);
+            this.infoUser = res.data 
         })
       },
       edit() {

@@ -67,7 +67,8 @@ export default {
                     this.allMessage = []
                     window.Echo.private('conversation.'+value.convExist.id).listen('.newMessage', (data) => {
                         console.log('new message', data)
-                        if (data.data) {
+                        let i = this.allMessage.findIndex(el => el.id == data.data.id)
+                        if (data.data && i == -1) {
                             this.allMessage.push(data.data)
                         }
                     });
@@ -91,7 +92,11 @@ export default {
             }
             console.log(data);
             MessageService.sendMessage(data).then(res => {
-                console.log('res',res);
+                let i = this.allMessage.findIndex(el => el.id == res.data.id)
+                if (i == -1) {
+                    this.allMessage.push(res.data)
+                }
+                this.message = ''
                 this.$emit('newConv',res.data.conversation,this.user)
             })
         }
