@@ -9,7 +9,7 @@ export default {
             broadcaster: 'pusher',
             key: '5a62c10d65059c1ecfdb',
             cluster: 'eu',
-            wsHost: 'localhost',
+            wsHost: 'https://back-chat-v1.herokuapp.com/',
             wsPort: 6001,
             disableStats: true,
             forceTLS: false,
