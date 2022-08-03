@@ -17,13 +17,17 @@
                           <h4>John Doe</h4>
                           <p class="text-secondary mb-1">Full Stack Developer</p>
                           <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                          <button class="btn btn-outline-primary" v-if="id_user != id_connecter">Message</button>
+                          <button class="btn btn-outline-primary" @click="userSelected = infoUser" v-if="id_user != id_connecter" data-bs-toggle="modal" data-bs-target="#exampleModal">Message</button>
                         </div>
                       </div>
                     </div>
                   </div>
-
+                   <!-- Modal -->
+                  <DemareMessage
+                  :user ="userSelected"
+                  @newConv = "newConversation"></DemareMessage>
                 </div>
+                
                 <div class="col-md-8" >
                   <div class="card mb-3">
                     <div class="card-body">
@@ -84,9 +88,13 @@
 <script>
 import config from '@/config/config.js'
 import profileService from '../../service/profileService.js'
+import DemareMessage from '@/components/DemareMessage.vue'
 export default {
     name:'ProfileView',
     props:['id'],
+    components: {
+      DemareMessage
+    },
     data() {
       return {
         formImg: {
@@ -97,7 +105,8 @@ export default {
         pathPdp: config.baseUrl + 'images/profile/',
         id_connecter: localStorage.getItem('user'),
         id_params: this.$route.params.id,
-        id_user: null
+        id_user: null,
+        userSelected: null
       }
     },
     methods: {
@@ -124,6 +133,9 @@ export default {
         profileService.editInfoUser(this.infoUser,this.id).then(res => {
           console.log(res);
         })
+      },
+      newConversation(conv){
+        this.userSelected.convExist = conv
       }
     },
     mounted() {

@@ -53,5 +53,11 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
-@import'assets/bootstrap.css'
+.limitelign{
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
 </style>

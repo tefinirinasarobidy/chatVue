@@ -44,7 +44,7 @@ const routes = [
   {
     path: '/message',
     name: 'message',
-    component:  () => import(/* webpackChunkName: "about" */ '../views/MessageView.vue'),
+    component:  () => import(/* webpackChunkName: "about" */ '../views/message/MessageView.vue'),
     meta: {
       isAuth : true
     }
